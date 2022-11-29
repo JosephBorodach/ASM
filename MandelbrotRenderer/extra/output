@@ -133,3 +133,9 @@ _done:
 //      c) x = temp;
 //          1. Set %r10 to %r15
 //
+gdb --args ./nameofexcutable arg1 arg2
+break 1
+Tui enable
+Tui reg general
+Gdb run
+

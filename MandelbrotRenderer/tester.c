@@ -79,8 +79,8 @@ int main(int argc, char *argv[]) {
             break;
         }
     }
-    printf("%f & %s\n", x, x_bits);
-    printf("%f & %s\n", y, y_bits);
+    // printf("%f & %s\n", x, x_bits);
+    // printf("%f & %s\n", y, y_bits);
     // printf("a: %ld\n", a);
     // printf("b: %ld\n", b);
     printf("MBPixelCalc() returned %d.\n", MBPixelCalc(a,b));

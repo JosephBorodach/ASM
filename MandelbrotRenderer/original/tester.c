@@ -96,3 +96,5 @@ int main(int argc, char *argv[]) {
 //for (int i = 0; i < 64; i++) {
 //    a = (a * 10) + (x_bits[i] - '0');
 //}
+// gcc -g tester.c MBPixelCalc.s -o tester
+// ./tester 0.25 -1.25
