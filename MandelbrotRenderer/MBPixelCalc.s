@@ -1,19 +1,17 @@
 .data
 .text
-.globl MBPixelCalc
-MBPixelCalc:
+.globl _MBPixelCalc
+_MBPixelCalc:
     pushq %r8; pushq %r9
     pushq %r10; pushq %r11
-    pushq %r12
-    pushq %r13
-    pushq %r14
-    pushq %r15
-    pushq %rdx
-    movq $0, %r8
-    movq $0, %r9
-    movq $0, %r10
-    movq $0, %r11
+    pushq %r12; pushq %r13
+    pushq %r14; pushq %r15
+    pushq %rdx; pushq %rbx
+    movq $0, %r8; movq $0, %r9
+    movq $0, %r10; movq $0, %r11
     movq $0, %r12
+    movq $2, %rbx
+    imul $2, %rbx
 _loop:
     cmpq $1000, %r12
     jge _done
@@ -27,7 +25,7 @@ _loop:
     mov %r13, %rdx
     addq %r14, %rdx
 
-    cmpq $4, %rdx
+    cmpq %rbx, %rdx
     jge _done
 
     mov %r13, %r15
@@ -49,5 +47,5 @@ _done:
     movq %r12, %rax
     popq %r8; popq %r9; popq %r10; popq %r11
     popq %r12; popq %r13; popq %r14; popq %r15
-    popq %rdx
+    popq %rdx; popq %rbx
     ret
