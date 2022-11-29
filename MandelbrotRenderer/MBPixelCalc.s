@@ -1,7 +1,7 @@
 .data
 .text
-.globl _MBPixelCalc
-_MBPixelCalc:
+.global MBPixelCalc
+MBPixelCalc:
     shl $6, %rdx
     sar $6, %rdx
     shl $58, %rsi
