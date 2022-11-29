@@ -86,3 +86,13 @@ int main(int argc, char *argv[]) {
     printf("MBPixelCalc() returned %d.\n", MBPixelCalc(a,b));
     return 0;
 }
+// 1) Uses a for loop to avoid duplicating code:
+//      The first iteration addresses x and the second address y
+//      The 1st and 2nd arguments accordingly.
+// 2) The for loop will terminate early if the variables passed in are the same
+//      In which case, y's values are simply set to x's values
+//trying to find a work around strtoll
+//a = 0;
+//for (int i = 0; i < 64; i++) {
+//    a = (a * 10) + (x_bits[i] - '0');
+//}
