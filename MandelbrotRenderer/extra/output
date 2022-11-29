@@ -144,6 +144,7 @@ _done:
 //      c) x = temp;
 //          1. Set %r10 to %r15
 //
+gcc -S c.c c.s -o c
 gdb --args ./nameofexcutable arg1 arg2
 break 1
 Tui enable

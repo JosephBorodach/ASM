@@ -2,6 +2,13 @@
 .text
 .globl MBPixelCalc
 MBPixelCalc:
+    pushq %rbp; pushq %rsp
+    mov %rdi, %rbp
+    mov %rsi, %rsp
+    shl $6, %rdi
+    shl $6, %rsi
+    shl $58, %rbp
+    shl $58, %rsp
     pushq %r8; pushq %r9
     pushq %r10; pushq %r11
     pushq %r12; pushq %r13
@@ -48,4 +55,5 @@ _done:
     popq %r8; popq %r9; popq %r10; popq %r11
     popq %r12; popq %r13; popq %r14; popq %r15
     popq %rdx; popq %rbx
+    popq %rbp; popq %rsp
     ret
