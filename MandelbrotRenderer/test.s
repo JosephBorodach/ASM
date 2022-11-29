@@ -2,5 +2,6 @@
 .text
 .globl test
 test:
-    mul %rdi
+    movq %rdi, %rax
+    mul %rsi
     ret
