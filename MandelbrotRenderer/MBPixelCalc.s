@@ -1,7 +1,7 @@
 .data
 .text
-.globl MBPixelCalc
-MBPixelCalc:
+.globl _MBPixelCalc
+_MBPixelCalc:
     pushq %r8; pushq %r9
     pushq %r10; pushq %r11
     pushq %r12; pushq %r13
@@ -30,7 +30,7 @@ _loop:
 
     mov %r13, %r15
     subq %r14, %r15
-    addq %rdi, %r15
+    addq %rcx, %r15
 
     imul %r10, %r11
     imul $2, %r11
