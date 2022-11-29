@@ -2,14 +2,18 @@
 #include <stdlib.h>
 int main(int argc, char *argv[]) {
     extern int MBPixelCalc(long, long);
+    /*
     if (argc != 3) {
         return -1;
     }
+    */
     double x, y;
     sscanf(argv[1], "%lf", &x), sscanf(argv[2], "%lf", &y);
+    /*
     if (x < -2 || x > 0.47 || y < -1.12 || y > 1.12) {
         return -1;
     }
+    */
     long a, b;
     char x_bits[65], y_bits[65];
     x_bits[64] = '\0', y_bits[64] = '\0';
@@ -81,8 +85,8 @@ int main(int argc, char *argv[]) {
     }
     printf("%f & %s\n", x, x_bits);
     printf("%f & %s\n", y, y_bits);
-    printf("a: %ld\n", a);
-    printf("b: %ld\n", b);
+    // printf("a: %ld\n", a);
+    // printf("b: %ld\n", b);
     printf("MBPixelCalc() returned %d.\n", MBPixelCalc(a,b));
     return 0;
 }
