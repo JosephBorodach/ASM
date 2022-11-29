@@ -2,6 +2,6 @@
 #include <stdlib.h>
 int main(void) {
     extern int test();
-    test();
+    test(288230376151711744);
     return 0;
 }
