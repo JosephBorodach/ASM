@@ -13,7 +13,6 @@ test:
     xorq %r9, %r9
     xorq %rax, %rax
     xorq %rax, %rax
-    movq $1, %rdx
     movq %rdi, %rax
     mul %rsi
     ret
