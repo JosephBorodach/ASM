@@ -151,3 +151,12 @@ Tui enable
 Tui reg general
 Gdb run
 
+
+    shl $6, %rdx
+    sar $6, %rdx
+    shl $58, %rsi
+    sar $58, %rsi
+    shl $6, %rsi
+    sar $6, %rsi
+    shl $58, %rsi
+    sar $58, %rsi
