@@ -1,7 +1,7 @@
 .data
 .text
-.globl _test
-_test:
+.globl test
+test:
     xorq %rax, %rax
     xorq %rdx, %rdx
     movq %rdi, %rax
