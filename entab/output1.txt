@@ -1,0 +1,9 @@
+Basic line should make no changes
+	S This is one space, should become one tab
+	T Just a single tab, this line should be unchanged
+		STS this should become two tabs
+		STS 	 	 	this   should become two tabs
+		SSSSS this should be two tabs
+		STST this should be two tabs
+	SSST one tab
+			STSTSSS three tabs

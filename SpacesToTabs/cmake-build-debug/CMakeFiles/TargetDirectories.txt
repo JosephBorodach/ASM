@@ -1,0 +1,3 @@
+/Users/josephborodach/CompOrg/SpacesToTabs/cmake-build-debug/CMakeFiles/SpacesToTabs.dir
+/Users/josephborodach/CompOrg/SpacesToTabs/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/josephborodach/CompOrg/SpacesToTabs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
