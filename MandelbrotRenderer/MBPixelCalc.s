@@ -1,7 +1,9 @@
 .data
 .text
-.globl MBPixelCalc
-MBPixelCalc:
+.globl _MBPixelCalc
+_MBPixelCalc:
+    sar $58, %rdi
+    sar $6, %rsi
     pushq %r8; pushq %r9
     pushq %r10; pushq %r11
     pushq %r12; pushq %r13
