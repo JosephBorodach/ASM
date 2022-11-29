@@ -3,7 +3,7 @@
 .globl test
 test:
     xorq %rax, %rax
-    xorq %rdx, %rdx
+    movq $1, %rdx
     movq %rdi, %rax
     mul %rsi
     ret
