@@ -1,15 +1,7 @@
 .data
 .text
-.global MBPixelCalc
-MBPixelCalc:
-    shl $6, %rdx
-    sar $6, %rdx
-    shl $58, %rsi
-    sar $58, %rsi
-    shl $6, %rsi
-    sar $6, %rsi
-    shl $58, %rsi
-    sar $58, %rsi
+.global _MBPixelCalc
+_MBPixelCalc:
     pushq %r8; pushq %r9
     pushq %r10; pushq %r11
     pushq %r12; pushq %r13
