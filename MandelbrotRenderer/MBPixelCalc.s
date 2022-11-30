@@ -1,7 +1,7 @@
 .data
 .text
-.global _MBPixelCalc
-_MBPixelCalc:
+.global MBPixelCalc
+MBPixelCalc:
     pushq %r8; pushq %r9
     pushq %r10; pushq %r11
     pushq %r12; pushq %r13
