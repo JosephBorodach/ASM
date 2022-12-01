@@ -7,11 +7,9 @@ int main(int argc, char *argv[]) {
     }
     double x = atof(argv[1]);
     double y = atof(argv[2]);
-    /*
     if (x < -2 || x > 0.47 || y < -1.12 || y > 1.12) {
         return -1;
     }
-    */
     long shift1 =  1;
     long shift2 =  1;
     shift1 = shift1 << 58;

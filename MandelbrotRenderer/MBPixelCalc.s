@@ -1,7 +1,7 @@
 .section .data
 .section .text
-.global MBPixelCalc
-MBPixelCalc:
+.global _MBPixelCalc
+_MBPixelCalc:
     pushq %r8; pushq %r9; pushq %r10; pushq %r11; pushq %r12; pushq %r13; pushq %r14
     movq $0, %r8; movq $0, %r9; movq $0, %r10; movq $0, %r11; movq $0, %r12; movq $0, %r13; movq $0, %r14
     movq $0, %rdx; movq $0, %rax;
@@ -93,9 +93,9 @@ _loop:
     ###############################################
 
     ###############################################
-    # Check if (x*x + y*y) < 576460752303423488; if this fails, end the program
+    # Check if (x*x + y*y) < 1152921504606846976; if this fails, end the program
     # %r8 holds (x*x + y*y)
-    # %r9 holds 576460752303423488
+    # %r9 holds 1152921504606846976
     cmpq %r9, %r8
     jge _done
     ###############################################
@@ -115,7 +115,7 @@ _loop:
 
     ###############################################
     # Do not touch %r10, it holds (x*x - y*y + x0)
-    # Zero out %r11, (y*y) is not longer needed
+    # Zero out %r11, (y*y) is no longer needed
     movq $0, %r11
     ###############################################
 
