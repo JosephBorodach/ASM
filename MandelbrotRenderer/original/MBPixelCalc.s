@@ -64,6 +64,8 @@ _loop:
     cmpq $1000, %r12 // #1
     jge _done
 
+    // bit shift left 6 - rax
+    // bit shift left 6 - rdx
     mov %r10, %r13   // #3a: (x * x); %r10 is x, %r13 holds the result of (x * x)
     imul %r10, %r13  // #3b
 
