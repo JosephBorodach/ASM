@@ -11,10 +11,13 @@ _loop:
     # %r14 == y
     # %r10 == holder for x * x
     # %r11 == holder for y * y
+    # %r8 == holder for (x * x) + (y * y)
+    #
     cmpq $1000, %r12
     jge _done
 
-    # Move x into %rax and square %rax
+    ###############################################
+    # (x * x): Move x into %rax and square %rax
     mov %r13, %rax
     imulq %r13
 
@@ -31,6 +34,7 @@ _loop:
     shl $6, %rdx
     movq %rdx, %r10
 
+    ###############################################
     movq $0, %rax
     movq $0, %rdx
 
@@ -52,20 +56,26 @@ _loop:
     movq $0, %rax
     movq $0, %rdx
 
-    movq %r10, %rdx
-    addq %r11, %rdx
+    ###############################################
+    movq $0, %r8
+    # Make %r8 equal to (x*x + y*y)
+    movq %r10, %r8      # %r8 = x*x
+    addq %r11, %r8      # %r8 += y*y
 
     # Check if (x*x + y*y) <= 576460752303423488; if this fails, end the program
-    cmpq %rbx, %rdx
+    cmpq %rbx, %r8
     jge _done
 
+    movq $0, %r8
+
+    ###############################################
     # %r15 is the temp holder for (x*x - y*y + x0),
     # which will ultimately be placed into x
     mov %r10, %r15      # Move (x*x) into %r15
     subq %r11, %r15     # Subtract (x*x) by (y*y)
     addq %rdi, %r15     # Add arg x
 
-    # y = 2*x*y + y0
+    # Set y = 2*x*y + y0
     imul %r13, %r14     # Add x to y
     imul $2, %r14       # Multiply y by 2
     addq %rsi, %r14     # Add arg y to y
