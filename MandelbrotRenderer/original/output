@@ -52,13 +52,14 @@
   * 7205 7594 0379 2793 6
   * 9223 3720 3685 4775 807
   *
-  * ./tester 0.2 -0.11      -->
+  * ./tester -1.1 -0.11      -->   1, but I'm getting six???
+  * x0 = -317053413766882944
+  * y0 = -31705341376688292
   *
   *
-  * ./tester -1.1 0.45     -->     2
-  *
-  * -317053413766882944
-  * 129703669268270288
+  * ./tester -1.1 0.45     -->
+  * x0 = -317053413766882944
+  * y0 = -31705341376688292
   *
   *
  /*
@@ -80,95 +81,10 @@
 86469112845513520
 */
 
-/*
-_MBPixelCalc:
-    pushq %r8        //
-    pushq %r9        //
-    pushq %r12       // iterative variable
-    pushq %r13       // temp variable
-    pushq %r14       // temp variable
-    pushq %r15       // temp variable
-    movq $0, %r8     // set x whole = 0
-    movq $0, %r9     // set x decimals = 0
-    movq $0, %r10    // set y whole = 0
-    movq $0, %r11    // set y decimals = 0
-    movq $0, %r12    // int i = 0
-    mov %rdi, %r13
-    mov %rsi, %r14
-    pushq %rdi
-    pushq %rsi
-    pushq %rdx
-_iterate:
-    cmpq $1000, %r12 // #1
-    jge _done
 
-    mov %r10, %rdi   // #3a
-    imul %r10, %rdi  // #3b
-    mov %r11, %rsi   // #4a
-    imul %r11, %rsi  // #4b
-
-    mov %rdi, %rdx   // #5
-    addq %rsi, %rdx
-
-    // How do I do <=?
-    cmpq $4, %rdx    // #6
-    jge _done
-
-    mov %rdi, %r15   // #7a1
-    subq %rsi, %r15  // #7a2
-    addq %r13, %r15   // #7a3
-
-    imul %r10, %r11   // #7b1
-    imul $2, %r11     // #7b2
-    addq %r14, %r11   // #7b3
-
-    mov %r15, %r10    // 7c1
-
-    addq $1, %r12    // #2
-
-    // This is probably uneccesary
-    cmpq $1000, %r12 // #1
-    jge _done
-    jmp _iterate
-_done:
-    movq %r12, %rax
-    popq %r8
-    popq %r9
-    popq %r12
-    popq %r13
-    popq %r14
-    popq %r15
-    popq %rdi
-    popq %rsi
-    popq %rdx
-    ret
-*/
-
-// 7) Calculations
-//      a) int temp = (x * x) - (y * y) + x0;
-//          1. Move (x * x) into %r15
-//          2. Subtract %r15 by (y * y)
-//          3. Add x0 to %r15
-//      b) y = (2 * x * y) + y0; y is %r11
-//          1. Multiply %r11 by x, which is %r10
-//          2. Multiply %r11 by 2
-//          3. Add y0, which is %r14, to %r11
-//      c) x = temp;
-//          1. Set %r10 to %r15
-//
 gcc -S c.c c.s -o c
 gdb --args ./nameofexcutable arg1 arg2
 break 1
 Tui enable
 Tui reg general
 Gdb run
-
-
-    shl $6, %rdx
-    sar $6, %rdx
-    shl $58, %rsi
-    sar $58, %rsi
-    shl $6, %rsi
-    sar $6, %rsi
-    shl $58, %rsi
-    sar $58, %rsi

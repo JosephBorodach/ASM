@@ -20,8 +20,8 @@ int main(int argc, char *argv[]) {
     long b = shift2 * y;
     //long a = 72057594037927936;
     //long b = -322818021289917184;
-    //printf("a: %ld\n", a);
-    //printf("b: %ld\n", b);
+    printf("a: %ld\n", a);
+    printf("b: %ld\n", b);
     printf("MBPixelCalc() returned %ld.\n", MBPixelCalc(a, b));
     return 0;
 }

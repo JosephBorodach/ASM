@@ -1,20 +1,25 @@
-.section .data
-.section .text
-.global MBPixelCalc
-MBPixelCalc:
+//.section .data
+//.section .text
+.global _MBPixelCalc
+_MBPixelCalc:
     pushq %r8; pushq %r9; pushq %r10; pushq %r11; pushq %r12; pushq %r13; pushq %r14
     movq $0, %r8; movq $0, %r9; movq $0, %r10; movq $0, %r11; movq $0, %r12; movq $0, %r13; movq $0, %r14
     movq $0, %rdx; movq $0, %rax;
+    # It's unclear what the value of 2 * 2 is - options are:
+    # 2305843009213693952
+    # 1152921504606846976
+    # 576460752303423488
     movq $1152921504606846976, %r9
 _loop:
     ###############################################
+    # Definitions:
     # %r10 == holder for x * x
     # %r11 == holder for y * y
-    # %r12 == the counter
+    # %e12 is the counter
     # %r13 == x0
     # %r14 == y0
-    # %r8  == holder for (x * x) + (y * y)
-    # %r9  == holder for the (2 * 2)
+    # %r8 == holder for (x * x) + (y * y)
+    # %r9 == holder for the (2 * 2)
     # %rdi == 1st arg
     # %rsi == 2nd args
     # %15 is free
