@@ -7,8 +7,10 @@ int main(int argc, char *argv[]) {
     if (argc != 3) {
         return -1;
     }
-    double x = atof(argv[1]);
-    double y = atof(argv[2]);
+    //double x = atof(argv[1]);
+    //double y = atof(argv[2]);
+    double x = 1.0;
+    double y = -1.12;
     //if (x < -2 || x > 0.47 || y < -1.12 || y > 1.12) {
     //    return -1;
     //}
