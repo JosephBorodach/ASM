@@ -1,7 +1,7 @@
 #.section .data
 #.section .text
-.global _MBPixelCalc
-_MBPixelCalc:
+.global MBPixelCalc
+MBPixelCalc:
     ###############################################
     # All registers a caller saved, so we don't need to deal with the stack!
     xorpd %xmm2, %xmm2; xorpd %xmm3, %xmm3; xorpd %xmm4, %xmm4; xorpd %xmm5, %xmm5
@@ -34,9 +34,9 @@ _MBPixelCalc:
 
     ###############################################
     # Set %xmm7 == 1.0
-    xor %rax, %rax
-    mov $1.0, %rax
-    movd %rax, %xmm7
+    # xor %rax, %rax
+    # mov $1.0, %rax
+    # movd %rax, %xmm7
     ###############################################
 
     ###############################################
