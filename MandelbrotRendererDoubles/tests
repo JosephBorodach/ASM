@@ -1,6 +1,7 @@
 gcc -g tester.c MBPixelCalc.s -o tester
 
-./tester 0.25 -1.12     -->     2
+./tester 0.25 -1.12     -->     3
+./tester 0.4   1.1      -->     2
 ./tester -1.1 -0.11     -->     1
 ./tester -1.1 0.45      -->     ?
 ./tester -1.9 -1.1      -->     ?
