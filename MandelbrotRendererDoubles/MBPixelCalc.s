@@ -1,7 +1,7 @@
 #.section .data
 #.section .text
-.global MBPixelCalc
-MBPixelCalc:
+.global _MBPixelCalc
+_MBPixelCalc:
     ###############################################
     # All registers a caller saved, so we don't need to deal with the stack!
     xorpd %xmm0, %xmm0; xorpd %xmm1, %xmm1; xorpd %xmm2, %xmm2; xorpd %xmm3, %xmm3; xorpd %xmm4, %xmm4; xorpd %xmm5, %xmm5
