@@ -1,5 +1,5 @@
-#.section .data
-#.section .text
+.section .data
+.section .text
 .global MBPixelCalc
 MBPixelCalc:
     ###############################################
@@ -8,35 +8,20 @@ MBPixelCalc:
     # %xmm3 == holder for x * x
     # %xmm4 == holder for y * y
     # %xmm5 == holder for (x * x) + (y * y)
-    #
     # %xmm8 == (2*2) == 4
     # %xmm9 == 1st arg / x0
     # %xmm10 == 2nd args / y0
     # %xmm11 == counter / number of iterations
-    #
     # %rbx == counter / number of iterations
-    #
-    # %xmm6 ==
-    # %xmm7 ==
-    # %xmm12 ==
-    # %xmm13 ==
-    # %xmm14 ==
-    # %xmm15 ==
-    # %eax
-    # %exs
-    # %edx
-    # %rdi
-    # %rsi
+    # Free: %xmm6, %xmm7, %xmm12, %xmm13, %xmm14, %xmm15, %eax, %exs, %edx, %rdi, %rsi
     # vcvttsd2si %xmm5, %rax
     ###############################################
 
     ###############################################
-    # All registers a caller saved, so we don't need to deal with the stack!
+    pushq %rbx
     xorpd %xmm2, %xmm2; xorpd %xmm3, %xmm3; xorpd %xmm4, %xmm4; xorpd %xmm5, %xmm5
-    xorpd %xmm6, %xmm6; xorpd %xmm7, %xmm7; xorpd %xmm8, %xmm8; xorpd %xmm9, %xmm9;
-    xorpd %xmm10, %xmm10; xorpd %xmm11, %xmm11
-    xor %rax, %rax
-    xor %rbx, %rbx
+    xorpd %xmm8, %xmm8; xorpd %xmm9, %xmm9; xorpd %xmm10, %xmm10; xorpd %xmm11, %xmm11
+    xor %rax, %rax; xor %rbx, %rbx
     ###############################################
 
     ###############################################
@@ -56,7 +41,8 @@ MBPixelCalc:
     ###############################################
     xor %rax, %rax
     mov $4, %rax
-    vcvtsi2sd %rax, %xmm8, %xmm8
+    # vcvtsi2sd %rax, %xmm8, %xmm8
+    cvtsi2sd %rax, %xmm8
     xor %rax, %rax
     ###############################################
 _loop:
@@ -76,13 +62,13 @@ _loop:
     # (x * x): Move x into %rax and square %xmm3
     # Remember: %xmm0 is x, so don't mess with it just yet!
     movapd %xmm0, %xmm3
-    mulsd %xmm3, %xmm3
+    mulpd %xmm3, %xmm3
     ###############################################
 
     ###############################################
     # (y * y): Move y (%xmm1) into %xmm4 and square %xmm4
     movq %xmm1, %xmm4
-    mulsd %xmm4, %xmm4
+    mulpd %xmm4, %xmm4
     ###############################################
 
     ###############################################
@@ -110,7 +96,7 @@ _loop:
     # %xmm3 will become the temp holder for (x*x - y*y + x0),
     # which will ultimately be placed into x
     # since %xmm3 alreay contains (x*x)
-    subsd %xmm4, %xmm3      # Subtract (x*x) by (y*y)
+    subpd %xmm4, %xmm3      # Subtract (x*x) by (y*y)
     addpd %xmm9, %xmm3      # Add arg x
     ###############################################
 
@@ -153,4 +139,5 @@ _done:
     # set %rax to 0
     xor %rax, %rax
     movq %rbx, %rax
+    popq %rbx
     ret
